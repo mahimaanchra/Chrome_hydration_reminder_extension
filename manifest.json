@@ -1,0 +1,24 @@
+{
+  "name": "Jal Pijiye",
+  "version": "1.0.0",
+  "manifest_version": 3,
+  "description": "An extension which will help you to finish your daily water intake",
+  "permissions": [
+    "storage",
+    "alarms",
+    "notifications"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_icon": "128 icon.png",
+    "default_popup": "index.html",
+    "default_title": "Stay hydrated, Stay focused"
+  },
+  "icons": {
+    "16": "128 icon.png",
+    "48": "128 icon.png",
+    "128": "128 icon.png"
+  }
+}
