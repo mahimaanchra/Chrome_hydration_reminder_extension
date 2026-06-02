@@ -1,7 +1,7 @@
 * {
     margin: 0;
     padding: 0;
-    font-family: Arial, sans-serif;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
     box-sizing: border-box;
 }
 
@@ -11,7 +11,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: rgb(210, 222, 236);
+    background-color: rgb(224, 236, 248); /* Softened background blue */
     position: relative; 
     overflow-x: hidden;
 }
@@ -47,119 +47,122 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 8px 16px rgba(14, 55, 93, 0.15); /* Softer shadow depth */
     border-radius: 50%;
 }
 
 .name {
     margin-top: 15px;
-    font-size: 32px;
+    font-size: 28px; /* Slightly adjusted down for better tracking */
     font-weight: bold;
-    color: rgb(165, 43, 121);
+    color: rgb(23, 119, 151); /* Shifted from purple to cohesive ocean blue */
     text-align: center;
+    letter-spacing: -0.5px;
 }
 
 .firstinput {
-    border: 2px solid rgb(134, 191, 193);
+    border: 2px solid rgb(155, 207, 226);
     width: 100%;
-    border-radius: 13px;
+    border-radius: 16px; /* Smoother rounding */
     padding: 20px;
     margin-top: 25px;
-    background-color: rgb(170, 192, 234);
+    background-color: rgb(188, 212, 244);
     text-align: center;
 }
 
 .question1 {
     margin-bottom: 15px;
-    font-size: 22px;
+    font-size: 20px;
     font-weight: bold;
     color: rgb(6, 26, 46);
 }
 
 .input1 {
-    height: 40px;
-    width: 80%;
-    background-color: rgb(210, 219, 219);
+    height: 44px; /* Slightly taller target area */
+    width: 85%;
+    background-color: rgb(235, 242, 245);
     border: 2px solid transparent;
-    border-radius: 8px;
+    border-radius: 10px;
     font-size: 16px;
     text-align: center;
-    transition: background-color 0.2s, border-color 0.2s;
+    transition: background-color 0.2s, border-color 0.2s, box-shadow 0.2s;
 }
 
 .input1:hover, .input1:focus {
-    background-color: aliceblue;
+    background-color: #ffffff;
     border-color: rgb(29, 128, 208);
+    box-shadow: 0 0 0 3px rgba(29, 128, 208, 0.2); /* Soft focus ring */
     outline: none;
 }
 
 .lg {
-    height: 40px;
-    width: 120px;
-    margin-top: 15px;
-    background-color: rgb(71, 210, 16);
+    height: 44px;
+    width: 130px;
+    margin-top: 18px;
+    background-color: rgb(29, 128, 208); /* Replaced bright green with solid action blue */
+    color: #ffffff;
     border: none;
     font-weight: bold;
     cursor: pointer;
-    border-radius: 8px;
-    transition: background-color 0.2s, transform 0.2s;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(29, 128, 208, 0.25);
+    transition: background-color 0.2s, transform 0.2s, box-shadow 0.2s;
 }
 
 .lg:hover {
-    background-color: rgb(119, 243, 10);
-    transform: scale(1.05);
+    background-color: rgb(24, 111, 182);
+    transform: translateY(-1px);
 }
 
 .text-container {
     width: 100%;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: center; /* Ensures content centers beautifully */
     margin-top: 40px;
 }
 
 #hypeline {
-    font-size: 30px;
+    font-size: 24px;
     color: rgb(245, 247, 248);
     background-color: rgb(23, 119, 151);
-    border-radius: 20px;
+    border-radius: 16px;
     text-align: center;
     width: 90%;
     padding: 15px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-    margin-bottom: 30px;
-    margin-left: 20px;
+    box-shadow: 0 4px 12px rgba(23, 119, 151, 0.2);
+    margin-bottom: 20px;
 }
 
 #deadline {
-    font-size: 28px;
+    font-size: 22px;
     color: rgb(248, 250, 252);
     background-color: rgb(16, 81, 103);
-    border-radius: 20px;
+    border-radius: 16px;
     text-align: center;
     width: 90%;
     padding: 15px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-    margin-bottom: 70px;
-    margin-left: 20px;
+    box-shadow: 0 4px 12px rgba(16, 81, 103, 0.2);
+    margin-bottom: 40px;
 }
 
 #newDay {
-    padding: 10px;
-    font-size: 25px;
-    margin-left: 117px;
+    padding: 12px 30px;
+    font-size: 20px;
+    margin-left: 0; /* REMOVED broken hardcoded left margin */
     background-color: rgb(29, 128, 208);
     border: none;
-    font-weight :700;
+    font-weight: 700;
     cursor: pointer;
-    border-radius: 10px;
+    border-radius: 12px;
     color: white;
-    transition: background-color 0.2s, transform 0.2s;
+    box-shadow: 0 4px 12px rgba(29, 128, 208, 0.3);
+    transition: background-color 0.2s, transform 0.2s, box-shadow 0.2s;
 }
 
 #newDay:hover {
-    background-color: rgb(74, 181, 219);
-    transform: scale(1.05);
+    background-color: rgb(24, 111, 182);
+    transform: translateY(-1px);
 }
 
 .popup-overlay {
@@ -168,7 +171,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(6, 26, 46, 0.6); /* Tinted dark overlay */
     display: none; 
     justify-content: center;
     align-items: center;
@@ -176,19 +179,19 @@ body {
 }
 
 .popup {
-    background-color: rgb(154, 229, 250);
+    background-color: rgb(214, 245, 255);
     padding: 25px;
     border-radius: 20px;
     text-align: center;
     width: 85%;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    box-shadow: 0 15px 35px rgba(6, 26, 46, 0.25);
     animation: popIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 #close {
     margin-top: 20px;
     padding: 10px 25px;
-    background-color: rgb(165, 43, 121);
+    background-color: rgb(23, 119, 151); /* Cohesive matching blue */
     color: white;
     border: none;
     border-radius: 25px;
@@ -199,7 +202,7 @@ body {
 }
 
 #close:hover {
-    background-color: rgb(135, 33, 91);
+    background-color: rgb(16, 81, 103);
     transform: scale(1.05);
 }
 
@@ -208,6 +211,6 @@ body {
 }
 
 @keyframes popIn {
-    0% { transform: scale(0.7); opacity: 0; }
+    0% { transform: scale(0.8); opacity: 0; }
     100% { transform: scale(1); opacity: 1; }
 }
