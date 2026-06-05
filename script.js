@@ -23,21 +23,14 @@ const formatTime = (dateObj) => {
     return dateObj.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
 };
 
-const getIntervalHours = (size) => {
-   if (size <= 250)  return 0.5;  
-    if (size <= 400)  return 0.75; 
-    if (size <= 500)  return 1.0;  
-    if (size <= 650)  return 1.25; 
-    if (size <= 750)  return 1.5;  
-    if (size <= 850)  return 1.75; 
-    if (size <= 1000) return 2.0;  
-    if (size <= 1250) return 2.25; 
-    if (size <= 1500) return 2.5;  
-    if (size <= 2000) return 3.0;   
-    return 4.0; 
+const getIntervalHours = (noOfBottles) => {
+const totalWakingHours = 14;
+const interval = totalWakingHours / noOfBottles;
+
+return Math.max(interval, 0.5);
 };
 
-const checkAlarmStatus = (goalTime, size, noOfBottles) => {
+const checkAlarmStatus = (goalTime, noOfBottles) => {
     const now = new Date().getTime();
     if (now >= goalTime) {
         showPopup(getIntervalHours(size), noOfBottles);
@@ -100,7 +93,7 @@ window.onload = () => {
             nextGoalTime = data.starting;
 
             updateUI(currentBottle, nextGoalTime);
-            checkAlarmStatus(nextGoalTime, Number(data.savedsize), Number(data.savedbottles));
+            checkAlarmStatus(nextGoalTime,  Number(data.savedbottles));
         }
     });
 };
@@ -110,7 +103,7 @@ elements.lgBtn.addEventListener("click", () => {
     if (!size) return alert("Please enter bottle size");
 
     const noOfBottles = Math.ceil(2000 / size);
-    const intervalMinutes = getIntervalHours(size) * 60;
+    const intervalMinutes = getIntervalHours(noOfBottles) * 60;
     const firstGoal = new Date().getTime() + (intervalMinutes * 60000);
 
     chrome.storage.local.set({
@@ -127,7 +120,7 @@ elements.lgBtn.addEventListener("click", () => {
         currentBottle = 1;
 
         updateUI(currentBottle, firstGoal);
-        checkAlarmStatus(firstGoal, size, noOfBottles);
+        checkAlarmStatus(firstGoal, noOfBottles);
     });
 });
 
