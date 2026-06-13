@@ -23,21 +23,21 @@ const formatTime = (dateObj) => {
     return dateObj.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
 };
 
+// Calculates dynamic tracking intervals cleanly across a standard 14-hour active day
 const getIntervalHours = (noOfBottles) => {
-const totalWakingHours = 14;
-const interval = totalWakingHours / noOfBottles;
-
-return Math.max(interval, 0.5);
+    const totalWakingHours = 14;
+    const interval = totalWakingHours / noOfBottles;
+    return Math.max(interval, 0.5); // Ensures reminders aren't unrealistically frequent
 };
 
 const checkAlarmStatus = (goalTime, noOfBottles) => {
     const now = new Date().getTime();
     if (now >= goalTime) {
-        showPopup(getIntervalHours(size), noOfBottles);
+        showPopup(getIntervalHours(noOfBottles), noOfBottles);
     } else {
         const interval = setInterval(() => {
             if (new Date().getTime() >= goalTime) {
-                showPopup(getIntervalHours(size), noOfBottles);
+                showPopup(getIntervalHours(noOfBottles), noOfBottles);
                 clearInterval(interval);
             }
         }, 1000);
@@ -63,7 +63,7 @@ const showPopup = (addhours, noOfBottles) => {
 
     elements.closePopupBtn.onclick = () => {
         elements.popup.style.display = "none";
-        
+
         if (currentBottle < noOfBottles) {
             currentBottle++; 
             nextGoalTime = new Date().getTime() + (addhours * 3600000);
@@ -74,6 +74,7 @@ const showPopup = (addhours, noOfBottles) => {
             }, () => {
                 chrome.alarms.create("hydrationAlarm", { when: nextGoalTime });
                 updateUI(currentBottle, nextGoalTime);
+                checkAlarmStatus(nextGoalTime, noOfBottles);
             });
         } else {
             chrome.alarms.clear("hydrationAlarm");
@@ -88,12 +89,12 @@ window.onload = () => {
             elements.firstPage.style.display = "none";
             elements.secondPage.style.display = "block";
             elements.totalBottleSpan.innerText = data.savedbottles;
-            
+
             currentBottle = data.currentBottle || 1;
             nextGoalTime = data.starting;
 
             updateUI(currentBottle, nextGoalTime);
-            checkAlarmStatus(nextGoalTime,  Number(data.savedbottles));
+            checkAlarmStatus(nextGoalTime, Number(data.savedbottles));
         }
     });
 };
