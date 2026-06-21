@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SipIt</title>
+    <link rel = "stylesheet" href = "style.css">
+</head>
+
+<body>
+    <div class="firstpage">
+<div class="header">
+    <div class="image">
+    </div>
+    <div class="name">
+        JAL PIJIYE
+    </div>
+</div>
+<div class="firstinput">
+    <p class = "question1">"Hey! How big is your go-to bottle?</p>
+    <input class = "input1"placeholder = "in (ml)" type = "number">  </input>
+    <button class = "lg">let's go</button>
+</div>
+</div>
+<div class="secondpage">
+    <div id="hypeline">"You're on a mission! You've got <span id="noofbottles"></span> bottles to crush today.💪" </div>
+    <div id="deadline">"Target: Let's finish bottle no.<span id = "current"> </span> by <span id="time"></span>. You've got this!"</div>  
+    <button id="newDay"> New Day </button>
+</div>
+<div class="popup-overlay">
+    <div class="popup">
+        <p id = "lastpopup"><span id="done"></span> down! Well done...Try to finish bottle no. <span id="nth"></span> by <span id="nextdeadline"></span> </p>
+        <button id="close">Done</button>
+    </div>
+</div>
+</body>
+<script src = "script.js"></script>
+</html>

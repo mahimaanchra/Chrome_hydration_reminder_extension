@@ -1,0 +1,213 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+    box-sizing: border-box;
+}
+body {
+    width: 400px;
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #f0f7f9 0%, #e0f2fe 100%);
+    min-height: 450px;
+}
+
+
+.firstpage {
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.secondpage {
+    display: none;
+    width: 100%;
+    padding: 20px;
+    text-align: center;
+}
+.header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.image {
+    background-image: url('jal lijiye.avif');
+    height: 160px;
+    width: 160px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    box-shadow: 0 8px 16px rgba(14, 55, 93, 0.15); /* Softer shadow depth */
+    border-radius: 50%;
+}
+
+.name {
+    margin-top: 15px;
+    font-size: 28px; /* Slightly adjusted down for better tracking */
+    font-weight: bold;
+    color: rgb(23, 119, 151); /* Shifted from purple to cohesive ocean blue */
+    text-align: center;
+    letter-spacing: -0.5px;
+}
+
+.firstinput {
+    border: 2px solid rgb(155, 207, 226);
+    width: 100%;
+    border-radius: 16px; /* Smoother rounding */
+    padding: 20px;
+    margin-top: 25px;
+    background-color: rgb(188, 212, 244);
+    text-align: center;
+}
+
+.question1 {
+    margin-bottom: 15px;
+    font-size: 20px;
+    font-weight: bold;
+    color: rgb(6, 26, 46);
+}
+
+.input1 {
+    height: 44px; /* Slightly taller target area */
+    width: 85%;
+    background-color: rgb(235, 242, 245);
+    border: 2px solid transparent;
+    border-radius: 10px;
+    font-size: 16px;
+    text-align: center;
+    transition: background-color 0.2s, border-color 0.2s, box-shadow 0.2s;
+}
+
+.input1:hover, .input1:focus {
+    background-color: #ffffff;
+    border-color: rgb(29, 128, 208);
+    box-shadow: 0 0 0 3px rgba(29, 128, 208, 0.2); /* Soft focus ring */
+    outline: none;
+}
+
+.lg {
+    height: 44px;
+    width: 130px;
+    margin-top: 18px;
+    background-color: rgb(29, 128, 208); /* Replaced bright green with solid action blue */
+    color: #ffffff;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(29, 128, 208, 0.25);
+    transition: background-color 0.2s, transform 0.2s, box-shadow 0.2s;
+}
+
+.lg:hover {
+    background-color: rgb(24, 111, 182);
+    transform: translateY(-1px);
+}
+
+.text-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Ensures content centers beautifully */
+    margin-top: 40px;
+}
+#hypeline, #deadline {
+    display: block;
+    width: 90%;
+    margin: 0 auto 20px auto; /* Centers the boxes horizontally and adds 20px spacing underneath */
+    font-size: 22px;
+    padding: 15px;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+#hypeline:hover, #deadline:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+}
+
+#hypeline {
+    color: rgb(245, 247, 248);
+    background-color: rgb(23, 119, 151);
+    margin-top: 20px;
+}
+
+#deadline {
+    color: rgb(248, 250, 252);
+    background-color: rgb(16, 81, 103);
+}
+
+#newDay {
+    display: inline-block;
+    padding: 12px 30px;
+    font-size: 20px;
+    margin-top: 20px;
+    background-color: rgb(29, 128, 208);
+    border: none;
+    font-weight: 700;
+    cursor: pointer;
+    border-radius: 12px;
+    color: white;
+    box-shadow: 0 4px 12px rgba(29, 128, 208, 0.3);
+    transition: background-color 0.2s, transform 0.2s, box-shadow 0.2s;
+}
+
+#newDay:hover {
+    background-color: rgb(24, 111, 182);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(29, 128, 208, 0.4);
+}
+
+.popup-overlay {
+    position: absolute; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(6, 26, 46, 0.6); /* Tinted dark overlay */
+    display: none; 
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.popup {
+    background-color: rgb(214, 245, 255);
+    padding: 25px;
+    border-radius: 20px;
+    text-align: center;
+    width: 85%;
+    box-shadow: 0 15px 35px rgba(6, 26, 46, 0.25);
+    animation: popIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+#close {
+    margin-top: 20px;
+    padding: 10px 25px;
+    background-color: rgb(23, 119, 151); /* Cohesive matching blue */
+    color: white;
+    border: none;
+    border-radius: 25px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+#close:hover {
+    background-color: rgb(16, 81, 103);
+    transform: scale(1.05);
+}
+
+#close:active {
+    transform: scale(0.95);
+}
+
+@keyframes popIn {
+    0% { transform: scale(0.8); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
